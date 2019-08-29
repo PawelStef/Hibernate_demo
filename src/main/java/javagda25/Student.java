@@ -2,9 +2,11 @@ package javagda25;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -24,5 +26,11 @@ public class Student implements IBaseEntity{
     private boolean alive;
     private int age;
     private double average; //nulable - nie ma not null
+
+    @EqualsAndHashCode.Exclude
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    private List<Grade> gradeList;
+
+
 
 }

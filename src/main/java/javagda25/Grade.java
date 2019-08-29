@@ -3,10 +3,14 @@ package javagda25;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.apache.commons.lang3.builder.ToStringExclude;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,5 +24,11 @@ public class Grade implements IBaseEntity{
     @CreationTimestamp
     private LocalDateTime dateTime;
     private double value;
+
+    @ToString.Exclude
+    @ManyToOne()
+    private Student student;
+
+
 
 }

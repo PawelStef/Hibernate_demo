@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 
 import javax.swing.text.html.parser.Entity;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.Scanner;
 
 public class Main {
@@ -56,9 +57,14 @@ public class Main {
                     entityDao.delite(Student.class, idL );
                     break;
 
-                case "addGrade":
+                case "addgrade":
                     System.out.println("Add grade:");
+
                     Grade grade = new Grade();
+                    System.out.println("Student id:");
+                    Optional<Student> studentOptional = entityDao.getById(Student.class,  Long.parseLong(sc.nextLine()));
+                    Student st = studentOptional.get();
+                    grade.setStudent(st);
                     System.out.println("Subject:");
                     grade.setSubject(GradeSubject.valueOf(sc.nextLine()));
 
