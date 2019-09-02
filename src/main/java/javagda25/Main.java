@@ -40,8 +40,8 @@ public class Main {
                     student.setName(sc.nextLine());
                     System.out.println("Student age:");
                     student.setAge(Integer.parseInt(sc.nextLine()));
-                    System.out.println("Student average:");
-                    student.setAverage(Double.parseDouble(sc.nextLine()));
+                    //System.out.println("Student average:");
+                    //student.setAverage(Double.parseDouble(sc.nextLine()));
                     System.out.println("Student alive?:");
                     student.setAlive(Boolean.parseBoolean(sc.nextLine()));
 

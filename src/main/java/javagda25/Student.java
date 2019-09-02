@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.List;
@@ -25,12 +26,11 @@ public class Student implements IBaseEntity{
     private String name;
     private boolean alive;
     private int age;
+    @Formula(value = "(SELECT AVG(g.value) FROM grade g WHERE g.student_id = id)")
     private double average; //nulable - nie ma not null
 
     @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
     private List<Grade> gradeList;
-
-
 
 }
